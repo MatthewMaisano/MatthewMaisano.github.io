@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://MatthewMaisano.github.io/al-folio/sitemap.xml
+Sitemap: https://MatthewMaisano.github.io/sitemap.xml
