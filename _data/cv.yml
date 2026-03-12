@@ -89,7 +89,7 @@ cv:
         icon: fa-solid fa-tag
         keywords: "Scientific divulgation, Romance, Crime"
         
-      -name: Climbing
+      - name: Climbing
       icon : fa-solid fa-tag
       keywords : "Rock climbing, Boulder climbing"
       
@@ -119,7 +119,7 @@ cv:
         start_date: March 2025
         end_date: June 2025
 
-        - name: Harmonic Oscillator and Cluster Wilson
+      - name: Harmonic Oscillator and Cluster Wilson
         summary: "Explored Advanced Simulations in C of A quantum Harmonic Oscillator with the goal of computing the Mass and The Energy of the
         ground state.  Use of Cluster Wilson (Milano - Bicocca) to generate data in order to compute numerically the topological Susceptibility of an SU(3)
         Yang-Mills Theory, and the Chiral Anomaly"
