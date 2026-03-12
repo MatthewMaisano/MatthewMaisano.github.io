@@ -92,30 +92,42 @@ cv:
       -name: Climbing
       icon : fa-solid fa-tag
       keywords : "Rock climbing, Boulder climbing"
+      
     Certificates:
-      - name: Machine Learning
-        date: 2018-01-01
-        issuer: Stanford University
+      - name: B1 First Certificate
+        date: 2018
+        issuer: Cambridge
         icon: fa-solid fa-location-dot
 
-      - name: Quantum Computing
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-tag
-
-      - name: Quantum Information
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-envelope
-
     Projects:
-      - name: Quantum Computing
-        summary: Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.
+      - name: Master Thesis (still in progress)
+        summary: "Finding solution to 5D Black Holes with homogeneous horizon, and possible extension to 8 Thurston Cosmologies. The work is done
+        mostly in 5D AdS and also Asymptotically AdS"
         highlights:
-          - Quantum Teleportation
-          - Quantum Cryptography
-        start_date: 2018-01-01
-        end_date: 2018-01-01
+          - Extension of General Relativity
+          - Einstein Equations
+          - Coupled Differential Equations
+          - Rotating and Charged Black Holes
+        start_date: Oct 2025
+        end_date: Sept 2026
+        
+      - name: Numerical Simulations for Astrophysics
+        summary: "Developed a numerical model to study astrophysical systems and visualize results with scientific plots by the use of Machine Learning Tecniques"
+        highlights:
+          - Unsupervised and Supervised Learning
+          - Neural Networks
+        start_date: March 2025
+        end_date: June 2025
+
+        - name: Harmonic Oscillator and Cluster Wilson
+        summary: "Explored Advanced Simulations in C of A quantum Harmonic Oscillator with the goal of computing the Mass and The Energy of the
+        ground state.  Use of Cluster Wilson (Milano - Bicocca) to generate data in order to compute numerically the topological Susceptibility of an SU(3)
+        Yang-Mills Theory, and the Chiral Anomaly"
+        highlights:
+          - Algorithm Efficiency Optimization
+          - Montecarlo Markov Chain
+        start_date: Oct 2024
+        end_date: June 2025
 
     References:
       - name: Professor John Doe
