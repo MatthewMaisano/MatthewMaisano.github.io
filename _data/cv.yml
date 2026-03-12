@@ -29,26 +29,33 @@ cv:
         courses: " Quantum Field Theory I & II, Mathematical Methods for Physics, General Relativity, Statistical Mechanics, Theoretical Physics
                     I & II, Quantum Gravity, Laboratory of Computational Physics, Topological Methods in Field Theories"
         highlights:
-          -  Master Thesis (Not Finished Yet) : Black Holes with homogeneous horizon in gauged supergravity
-          - Extra Courses Followed: Optimal Control Theory, Geometrical Methods for Physics, Phenomenology Theory
+          - "Master Thesis (Not Finished Yet) : Black Holes with homogeneous horizon in gauged supergravity"
+          - "Extra Courses Followed: Optimal Control Theory, Geometrical Methods for Physics, Phenomenology Theory"
 
       - institution: University of Milano Bicocca
         location: Milan, Italy
         area: Physics
-        studyType: Federal teaching diploma
-        start_date: 1896
-        end_date: 1900
+        studyType: Bachelor Degree
+        start_date: 2020
+        end_date: 2023
+        score : "101"
+        courses:  "Mathematical Analisis I, Linear Algebra and Geometry, Chemistry, Laboratory I, Physics I, Laboratory of Computer Science,
+        Classical Mechanics, Mathematical Analisis II, Laboratory II, Physics II, Physics III, Mathematics for Physics, Elements of Astrophysics,
+        Quantum Mechanics, Structure of Matter,Plasma Physics Laboratory,Geometry III, Nuclear and Subnuclear Physics, Relativity, Computing Skills"
         highlights:
-          - Description 1.
-          - Description 2.
+          - "Bachelor Thesis : Instantons in Quantum Mechanics and Quantum Field Theory"
+          - "Extra Courses followed: Geometry I, Geometry II."
 
     Experience:
-      - company: Institute for Advanced Study, Princeton University
-        position: Professor of Theoretical Physics
+      - company: Erba Fina
+        position: Event Assistant & Coordinator
         location: Princeton University, NJ
-        start_date: 1933
-        end_date: 1955
-        summary: Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.
+        start_date: 2020
+        end_date: "Now"
+        summary: " Managed the logistical and technical execution of private and corporate
+events. I gained significant experience inmultitasking and problem-solving, while refiningmy communication and leadership abilities.
+This role was instrumental in developing a high level of time management and the capacity to coordinate team efforts to ensure the
+success of complex projects."
         highlights:
           - Relativity
           - Description 2.
