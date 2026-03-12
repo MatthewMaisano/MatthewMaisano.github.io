@@ -9,6 +9,7 @@ cv:
   social_networks:
     - network: GitHub
       username: MatthewMaisano
+
   address:
     street: 34b Via San Carlo 
     city: Samarate
@@ -26,10 +27,11 @@ cv:
         start_date: 2023
         end_date: 2026 
         score: ""
-        courses: " Quantum Field Theory I & II, Mathematical Methods for Physics, General Relativity, Statistical Mechanics, Theoretical Physics
-                    I & II, Quantum Gravity, Laboratory of Computational Physics, Topological Methods in Field Theories"
+        courses: >
+          Quantum Field Theory I & II, Mathematical Methods for Physics, General Relativity, Statistical Mechanics, Theoretical Physics
+          I & II, Quantum Gravity, Laboratory of Computational Physics, Topological Methods in Field Theories
         highlights:
-          - "Master Thesis (Not Finished Yet) : Black Holes with homogeneous horizon in gauged supergravity"
+          - "Master Thesis (Not Finished Yet): Black Holes with homogeneous horizon in gauged supergravity"
           - "Extra Courses Followed: Optimal Control Theory, Geometrical Methods for Physics, Phenomenology Theory"
 
       - institution: University of Milano Bicocca
@@ -38,12 +40,13 @@ cv:
         studyType: Bachelor Degree
         start_date: 2020
         end_date: 2023
-        score : "101"
-        courses:  "Mathematical Analisis I, Linear Algebra and Geometry, Chemistry, Laboratory I, Physics I, Laboratory of Computer Science,
-        Classical Mechanics, Mathematical Analisis II, Laboratory II, Physics II, Physics III, Mathematics for Physics, Elements of Astrophysics,
-        Quantum Mechanics, Structure of Matter,Plasma Physics Laboratory,Geometry III, Nuclear and Subnuclear Physics, Relativity, Computing Skills"
+        score: "101"
+        courses: >
+          Mathematical Analysis I, Linear Algebra and Geometry, Chemistry, Laboratory I, Physics I, Laboratory of Computer Science,
+          Classical Mechanics, Mathematical Analysis II, Laboratory II, Physics II, Physics III, Mathematics for Physics, Elements of Astrophysics,
+          Quantum Mechanics, Structure of Matter, Plasma Physics Laboratory, Geometry III, Nuclear and Subnuclear Physics, Relativity, Computing Skills
         highlights:
-          - "Bachelor Thesis : Instantons in Quantum Mechanics and Quantum Field Theory"
+          - "Bachelor Thesis: Instantons in Quantum Mechanics and Quantum Field Theory"
           - "Extra Courses followed: Geometry I, Geometry II."
 
     Experience:
@@ -52,18 +55,15 @@ cv:
         location: Erba fina, Busto Arsizio
         start_date: 2020
         end_date: "Now"
-        summary: " Managed the logistical and technical execution of private and corporate
-        events. I gained significant experience in multitasking and problem-solving, while refining my communication and leadership abilities.
-        This role was instrumental in developing a high level of time management and the capacity to coordinate team efforts to ensure the
-        success of complex projects."
+        summary: >
+          Managed the logistical and technical execution of private and corporate events. I gained significant experience in multitasking and problem-solving, while refining my communication and leadership abilities. This role was instrumental in developing a high level of time management and the capacity to coordinate team efforts to ensure the success of complex projects.
 
       - position: Private tutor
         location: Milan, IT
         start_date: 2020
         end_date: "Now"
-        summary: "Since my first year of university (A.Y. 2020–2021), I have provided academic tutoring to high school and university students, assisting them with exercises and conceptual explanations to deepen their understanding of STEM subjects. My approach focuses on
-        training essential skills such as problem-solving, critical thinking, and independent study management, helping students develop
-        autonomous and effective learning strategies."
+        summary: >
+          Since my first year of university (A.Y. 2020–2021), I have provided academic tutoring to high school and university students, assisting them with exercises and conceptual explanations to deepen their understanding of STEM subjects. My approach focuses on training essential skills such as problem-solving, critical thinking, and independent study management, helping students develop autonomous and effective learning strategies.
    
     Skills:
       - name: Physics
@@ -71,8 +71,9 @@ cv:
         icon: fa-solid fa-hashtag
         keywords: "Quantum Mechanics, Computational Physics, Quantum Field Theory, Quantum gravity, General Relativity, Geometry"
       - name: Coding Languages
-        icon: fa-solid- fa-hashtag
+        icon: fa-solid fa-hashtag
         keywords: "Python, C, C++, ROOT, Mathematica"
+
     Languages:
       - name: Italian
         summary: "Native speaker"
@@ -90,8 +91,8 @@ cv:
         keywords: "Scientific divulgation, Romance, Crime"
         
       - name: Climbing
-      icon : fa-solid fa-tag
-      keywords : "Rock climbing, Boulder climbing"
+        icon: fa-solid fa-tag
+        keywords: "Rock climbing, Boulder climbing"
       
     Certificates:
       - name: B1 First Certificate
@@ -101,8 +102,8 @@ cv:
 
     Projects:
       - name: Master Thesis (still in progress)
-        summary: "Finding solution to 5D Black Holes with homogeneous horizon, and possible extension to 8 Thurston Cosmologies. The work is done
-        mostly in 5D AdS and also Asymptotically AdS"
+        summary: >
+          Finding solution to 5D Black Holes with homogeneous horizon, and possible extension to 8 Thurston Cosmologies. The work is done mostly in 5D AdS and also Asymptotically AdS
         highlights:
           - Extension of General Relativity
           - Einstein Equations
@@ -112,7 +113,8 @@ cv:
         end_date: Sept 2026
         
       - name: Numerical Simulations for Astrophysics
-        summary: "Developed a numerical model to study astrophysical systems and visualize results with scientific plots by the use of Machine Learning Tecniques"
+        summary: >
+          Developed a numerical model to study astrophysical systems and visualize results with scientific plots by the use of Machine Learning Tecniques
         highlights:
           - Unsupervised and Supervised Learning
           - Neural Networks
@@ -120,12 +122,13 @@ cv:
         end_date: June 2025
 
       - name: Harmonic Oscillator and Cluster Wilson
-        summary: "Explored Advanced Simulations in C of A quantum Harmonic Oscillator with the goal of computing the Mass and The Energy of the
-        ground state.  Use of Cluster Wilson (Milano - Bicocca) to generate data in order to compute numerically the topological Susceptibility of an SU(3)
-        Yang-Mills Theory, and the Chiral Anomaly"
+        summary: >
+          Explored Advanced Simulations in C of a quantum Harmonic Oscillator with the goal of computing the Mass and The Energy of the ground state. Use of Cluster Wilson (Milano - Bicocca) to generate data in order to compute numerically the topological Susceptibility of an SU(3) Yang-Mills Theory, and the Chiral Anomaly
         highlights:
           - Algorithm Efficiency Optimization
           - Montecarlo Markov Chain
+        start_date: Oct 2024
+        end_date: June 2025
         start_date: Oct 2024
         end_date: June 2025
 
