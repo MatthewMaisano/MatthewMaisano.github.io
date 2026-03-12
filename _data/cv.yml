@@ -21,19 +21,19 @@ cv:
       - institution: University of Milano Bicocca
         location: Milan, Italy
         url: https://www.unimib.it/
-        area: Physics
+        area: Theoretical Physics
         studyType: Master Degree
-        start_date: Oct 2023
-        end_date: Sept 2026 (Expected)
+        start_date: 2023
+        end_date: 2026 
         score: ""
         courses: " Quantum Field Theory I & II, Mathematical Methods for Physics, General Relativity, Statistical Mechanics, Theoretical Physics
                     I & II, Quantum Gravity, Laboratory of Computational Physics, Topological Methods in Field Theories"
         highlights:
-          - Description 1.
-          - Description 2.
+          -  Master Thesis (Not Finished Yet) : Black Holes with homogeneous horizon in gauged supergravity
+          - Extra Courses Followed: Optimal Control Theory, Geometrical Methods for Physics, Phenomenology Theory
 
-      - institution: Eidgenössische Technische Hochschule
-        location: Zurich, Switzerland
+      - institution: University of Milano Bicocca
+        location: Milan, Italy
         area: Physics
         studyType: Federal teaching diploma
         start_date: 1896
