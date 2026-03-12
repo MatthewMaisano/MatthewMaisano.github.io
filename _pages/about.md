@@ -10,8 +10,7 @@ profile:
   more_info: >
     <p> 34b, Via San Carlo</p>
     <p>Samarate, Italy , 21017</p>
-
-selected_papers: true # includes a list of papers marked as "selected={true}"
+    
 social: true # includes social icons at the bottom of the page
 
 
