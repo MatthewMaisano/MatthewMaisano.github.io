@@ -21,7 +21,9 @@ latest_posts:
 ---
 
 Hi! I'm Matthew Maisano and this is my personal page.
-I'm deeply interested into science, especially in Theoretical Physics, which is my field of study.
-My main areas of interest find their groundings in Quantum Mechanics, Quantum Field Theory, General Relativity and Quantum Gravity,
-I'm very interested in the last two, and my long-term goal is to pursue a career as a researcher in these fields.
+I have many interests but my gratest passion is physics, especially theoretical physics, I find it very fascinating.
+Since the start of my Bachelor Degree, I had a deep curiousity in mathematical aspects of phyiscs, Geometry, Group theory, Topology, and these interests drove me to choose a thesis about Black Holes (in D = 5 AdS), which is a great topic to investigate because of the recent developements in AdS/CFT conjecture and Gravity.
+Now I'm looking for a PhD position, looking foward to pursue my long-term goal: becoming a researcher.
+My passion for theoretical physics is continuously fueled by my independent reading and my active engagement with online scientific resources.
+
 
