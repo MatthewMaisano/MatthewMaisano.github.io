@@ -415,7 +415,7 @@ ninja.data = [{
         title: 'CV',
         section: 'Socials',
         handler: () => {
-          window.open("/assets/pdf/CV_Matthew_Maisano.pdf", "_blank");
+          window.open("/assets/pdf/Maisano_Matthew_CV.pdf", "_blank");
         },
       },{
         id: 'social-email',
