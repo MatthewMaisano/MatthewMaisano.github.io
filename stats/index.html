@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stats. — a search bar for official statistics</title>
+<meta name="description" content="Type the name of a statistic and get sent straight to the official national and global sources that publish it.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    color-scheme: light dark;
+    --bg:#F1F4F5;
+    --surface:#FFFFFF;
+    --surface-2:#E7ECEE;
+    --ink:#151B22;
+    --ink-soft:#57626B;
+    --ink-faint:#8A959C;
+    --line:#D3DBDE;
+    --line-strong:#B9C3C7;
+    --accent:#20509A;
+    --accent-ink:#FFFFFF;
+    --warm:#B4711F;
+    --warm-bg:#F2E4CE;
+    --focus:#20509A;
+    --shadow: 0 1px 2px rgba(21,27,34,0.06), 0 8px 24px -12px rgba(21,27,34,0.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0E1215;
+      --surface:#161B1F;
+      --surface-2:#1E252A;
+      --ink:#E6EAEC;
+      --ink-soft:#98A3AB;
+      --ink-faint:#67727A;
+      --line:#2A3339;
+      --line-strong:#39444B;
+      --accent:#79ABEE;
+      --accent-ink:#0E1215;
+      --warm:#E3A15C;
+      --warm-bg:#332715;
+      --focus:#79ABEE;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -14px rgba(0,0,0,0.55);
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html,body{ background:var(--bg); }
+  body{
+    margin:0;
+    color:var(--ink);
+    font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  ::selection{ background:var(--warm-bg); color:var(--ink); }
+
+  .frame{
+    max-width:760px;
+    margin:0 auto;
+    padding:56px 24px 96px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:36px 28px 32px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:
+      linear-gradient(var(--line) 1px, transparent 1px) 0 0/100% 28px,
+      var(--surface);
+    background-blend-mode:normal;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 0%, var(--surface) 92%);
+    pointer-events:none;
+  }
+  .wordmark{
+    position:relative;
+    font-family:"Big Shoulders Display", ui-sans-serif, sans-serif;
+    font-weight:800;
+    font-size:clamp(52px, 11vw, 88px);
+    line-height:0.85;
+    letter-spacing:-0.01em;
+    margin:0;
+    text-wrap:balance;
+  }
+  .wordmark .dot{ color:var(--warm); }
+  .tagline{
+    position:relative;
+    margin:14px 0 0;
+    max-width:46ch;
+    font-size:16px;
+    line-height:1.5;
+    color:var(--ink-soft);
+  }
+  .meta-row{
+    position:relative;
+    margin-top:18px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:11.5px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .meta-row b{
+    color:var(--ink-soft);
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------- Search ---------- */
+  .search-wrap{
+    margin-top:22px;
+    position:relative;
+  }
+  .search-field{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--surface);
+    border:1.5px solid var(--line-strong);
+    border-radius:4px;
+    padding:14px 16px;
+    box-shadow:var(--shadow);
+  }
+  .search-field:focus-within{
+    border-color:var(--focus);
+    box-shadow:0 0 0 3px color-mix(in srgb, var(--focus) 22%, transparent), var(--shadow);
+  }
+  .search-field .prompt{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    color:var(--warm);
+    font-size:17px;
+    flex:none;
+  }
+  #q{
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:var(--ink);
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:17px;
+  }
+  #q::placeholder{ color:var(--ink-faint); }
+  .caret{
+    width:9px; height:20px;
+    background:var(--accent);
+    flex:none;
+    animation:blink 1.05s steps(1) infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .caret{ animation:none; opacity:.6; } }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  /* ---------- Suggestions ---------- */
+  .suggestions{
+    margin-top:8px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    background:var(--surface);
+    box-shadow:var(--shadow);
+  }
+  .suggestions[hidden]{ display:none; }
+  .suggestion{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+    width:100%;
+    text-align:left;
+    padding:10px 16px;
+    background:transparent;
+    border:0;
+    border-top:1px solid var(--line);
+    color:var(--ink);
+    font:inherit;
+    font-size:14.5px;
+    cursor:pointer;
+  }
+  .suggestion:first-child{ border-top:0; }
+  .suggestion:hover, .suggestion:focus-visible{ background:var(--surface-2); outline:none; }
+  .suggestion small{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:11px;
+    color:var(--ink-faint);
+    white-space:nowrap;
+  }
+
+  /* ---------- Results ---------- */
+  .results{ margin-top:30px; }
+  .results[hidden]{ display:none; }
+
+  .results-head{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--line);
+  }
+  .results-head h2{
+    font-family:"Big Shoulders Display", sans-serif;
+    font-weight:700;
+    font-size:26px;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .status-tag{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:10.5px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:100px;
+    border:1px solid currentColor;
+  }
+  .status-tag.match{ color:var(--warm); background:var(--warm-bg); border-color:transparent; }
+  .status-tag.free{ color:var(--ink-faint); }
+
+  .group-label{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin:20px 0 10px;
+  }
+  .group-label:first-of-type{ margin-top:0; }
+
+  .source-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(210px,1fr));
+    gap:10px;
+  }
+
+  .source-card{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    padding:13px 14px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:4px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:border-color .12s ease, transform .12s ease;
+  }
+  @media (prefers-reduced-motion: reduce){ .source-card{ transition:none; } }
+  .source-card:hover, .source-card:focus-visible{
+    border-color:var(--accent);
+    transform:translateY(-1px);
+    outline:none;
+  }
+  .source-card.primary{
+    border-color:var(--warm);
+    background:linear-gradient(180deg, var(--warm-bg), var(--surface) 60%);
+  }
+  .source-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+  }
+  .source-name{ font-weight:600; font-size:14.5px; }
+  .source-region{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-size:10px;
+    letter-spacing:0.04em;
+    color:var(--ink-faint);
+    border:1px solid var(--line-strong);
+    border-radius:3px;
+    padding:1px 5px;
+    flex:none;
+  }
+  .source-action{
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .source-action .arrow{ color:var(--accent); margin-left:2px; }
+
+  .empty-hint{
+    font-size:14px;
+    color:var(--ink-soft);
+    padding:18px 0 4px;
+  }
+
+  /* ---------- Index (all sources, always visible) ---------- */
+  .index{
+    margin-top:56px;
+    padding-top:22px;
+    border-top:1px solid var(--line);
+  }
+  .index h3{
+    font-family:"Big Shoulders Display", sans-serif;
+    font-weight:700;
+    font-size:20px;
+    margin:0 0 4px;
+  }
+  .index p{
+    margin:0 0 16px;
+    color:var(--ink-soft);
+    font-size:14px;
+    max-width:56ch;
+  }
+  .index-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(210px,1fr));
+    gap:10px;
+  }
+  .index-card{
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:var(--surface);
+  }
+  .index-card .source-top{ margin-bottom:4px; }
+  .index-card p{
+    margin:0;
+    font-size:12.5px;
+    color:var(--ink-faint);
+    max-width:none;
+  }
+
+  footer{
+    margin-top:48px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px;
+    font-size:12.5px;
+    color:var(--ink-faint);
+  }
+  footer a{ color:var(--ink-soft); text-decoration:underline; text-underline-offset:2px; }
+
+  @media (max-width:480px){
+    .frame{ padding:36px 16px 72px; }
+    .hero{ padding:26px 18px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame">
+
+  <div class="hero">
+    <h1 class="wordmark">Stats<span class="dot">.</span></h1>
+    <p class="tagline">Type the name of a statistic. Get sent straight to the official sources that publish it — national and global — instead of a page of generic search results.</p>
+    <div class="meta-row">
+      <span><b id="sourceCount">9</b> sources indexed</span>
+      <span><b id="statCount">24</b> statistics recognised</span>
+      <span>Public data only, no accounts, nothing stored</span>
+    </div>
+  </div>
+
+  <div class="search-wrap">
+    <div class="search-field">
+      <span class="prompt">&gt;</span>
+      <input id="q" type="text" autocomplete="off" spellcheck="false"
+             placeholder="youth unemployment, PIL, inflazione, government bond yields…"
+             aria-label="Search for a statistic" aria-expanded="false" aria-controls="suggestions" role="combobox" aria-autocomplete="list">
+      <span class="caret" aria-hidden="true"></span>
+    </div>
+    <div id="suggestions" class="suggestions" hidden role="listbox"></div>
+  </div>
+
+  <section id="results" class="results" hidden aria-live="polite">
+    <div class="results-head">
+      <h2 id="resultsTitle">—</h2>
+      <span id="resultsTag" class="status-tag match">matched</span>
+    </div>
+    <div id="resultsBody"></div>
+  </section>
+
+  <section class="index">
+    <h3>The 9 sources</h3>
+    <p>Every search checks against this list. Some link straight to a live search on that source; a couple don't support query links, so those open the statistics portal itself.</p>
+    <div id="indexGrid" class="index-grid"></div>
+  </section>
+
+  <footer>
+    <span>Built as a working prototype — link patterns are hand-picked and may occasionally drift; if one 404s, the source's own search box is one click away.</span>
+    <a href="/">Matthew Maisano →</a>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------- Sources ----------
+  // type "query"  -> url must contain {q}, replaced with the encoded search text
+  // type "static" -> url opens as-is (portal home), no query support
+  var SOURCES = [
+    { id:"istat",   name:"Istat",              region:"IT",     type:"query",  url:"https://www.istat.it/?s={q}" },
+    { id:"eurostat",name:"Eurostat",           region:"EU",     type:"query",  url:"https://ec.europa.eu/eurostat/databrowser/search?query={q}" },
+    { id:"oecd",    name:"OECD",               region:"OECD",   type:"query",  url:"https://www.oecd.org/en/search.html?q={q}" },
+    { id:"wb",      name:"World Bank",         region:"GLOBAL", type:"query",  url:"https://data.worldbank.org/indicator?tag=&q={q}" },
+    { id:"imf",     name:"IMF Data",           region:"GLOBAL", type:"static", url:"https://data.imf.org/" },
+    { id:"un",      name:"UN Data",            region:"GLOBAL", type:"query",  url:"https://data.un.org/Search.aspx?q={q}" },
+    { id:"fred",    name:"FRED",               region:"US",     type:"query",  url:"https://fred.stlouisfed.org/search?st={q}" },
+    { id:"bdi",     name:"Banca d'Italia",     region:"IT",     type:"static", url:"https://www.bancaditalia.it/statistiche/index.html" },
+    { id:"te",      name:"Trading Economics",  region:"GLOBAL", type:"query",  url:"https://tradingeconomics.com/search.aspx?q={q}" }
+  ];
+  var SOURCE_BY_ID = {};
+  SOURCES.forEach(function(s){ SOURCE_BY_ID[s.id] = s; });
+
+  // ---------- Curated statistics ----------
+  // "recommend" points to the 2-4 sources best suited to that particular statistic;
+  // every other indexed source still appears, just lower down.
+  var STATS = [
+    { name:"Unemployment rate", aliases:["unemployment","disoccupazione","tasso di disoccupazione"], recommend:["istat","eurostat","oecd","wb"] },
+    { name:"Youth unemployment", aliases:["disoccupazione giovanile","youth jobless","neet rate","neet"], recommend:["istat","eurostat","wb"] },
+    { name:"Inflation / consumer prices", aliases:["inflazione","cpi","consumer price index","prezzi al consumo"], recommend:["istat","eurostat","fred","bdi"] },
+    { name:"GDP and GDP growth", aliases:["pil","gross domestic product","crescita pil","gdp growth"], recommend:["istat","eurostat","wb","imf"] },
+    { name:"Public debt", aliases:["debito pubblico","government debt","sovereign debt"], recommend:["bdi","eurostat","imf"] },
+    { name:"Government deficit", aliases:["deficit pubblico","budget deficit","fiscal deficit"], recommend:["eurostat","imf"] },
+    { name:"Interest rates", aliases:["tassi di interesse","tasso bce","ecb rate","policy rate"], recommend:["bdi","fred","eurostat"] },
+    { name:"Exchange rates", aliases:["tasso di cambio","cambio euro dollaro","fx rate"], recommend:["bdi","fred","te"] },
+    { name:"Population", aliases:["popolazione","demographics","popolazione residente"], recommend:["istat","wb","un"] },
+    { name:"Life expectancy", aliases:["aspettativa di vita","speranza di vita"], recommend:["istat","wb","oecd"] },
+    { name:"Poverty rate", aliases:["tasso di povertà","poverty line","poverta"], recommend:["istat","wb","oecd"] },
+    { name:"Trade balance", aliases:["bilancia commerciale","import export","balance of trade"], recommend:["istat","eurostat","imf"] },
+    { name:"Wages and salaries", aliases:["salario medio","stipendio medio","average wage","earnings"], recommend:["istat","oecd","eurostat"] },
+    { name:"Minimum wage", aliases:["salario minimo","minimum wage"], recommend:["eurostat","oecd"] },
+    { name:"House prices", aliases:["prezzi delle case","mercato immobiliare","housing market"], recommend:["bdi","eurostat","oecd"] },
+    { name:"Birth rate", aliases:["tasso di natalità","natalità","fertility rate"], recommend:["istat","wb","un"] },
+    { name:"Energy prices", aliases:["prezzi energia","gas prices","electricity prices"], recommend:["eurostat","istat","te"] },
+    { name:"Government bond yields", aliases:["rendimento btp","spread","btp bund","bond yield"], recommend:["bdi","te","fred"] },
+    { name:"Stock market index", aliases:["indice di borsa","ftse mib","borsa italiana","stock index"], recommend:["te","fred"] },
+    { name:"Education attainment", aliases:["livello di istruzione","tasso di laurea","educational attainment"], recommend:["istat","oecd","eurostat"] },
+    { name:"Foreign direct investment", aliases:["investimenti diretti esteri","fdi"], recommend:["wb","imf","oecd"] },
+    { name:"Consumer confidence", aliases:["fiducia dei consumatori","consumer sentiment"], recommend:["istat","eurostat","oecd"] },
+    { name:"Industrial production", aliases:["produzione industriale","industrial output"], recommend:["istat","eurostat","fred"] },
+    { name:"CO2 emissions", aliases:["emissioni co2","carbon emissions","greenhouse gas"], recommend:["wb","oecd","eurostat"] }
+  ];
+
+  document.getElementById("statCount").textContent = STATS.length;
+  document.getElementById("sourceCount").textContent = SOURCES.length;
+
+  // ---------- helpers ----------
+  function norm(s){
+    return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").trim();
+  }
+  function buildUrl(source, query){
+    if(source.type === "static") return source.url;
+    return source.url.replace("{q}", encodeURIComponent(query));
+  }
+  function matchScore(query, stat){
+    var q = norm(query);
+    if(!q) return -1;
+    var fields = [stat.name].concat(stat.aliases).map(norm);
+    var best = -1;
+    fields.forEach(function(f){
+      if(f === q) best = Math.max(best, 100);
+      else if(f.indexOf(q) === 0) best = Math.max(best, 80);
+      else if(f.indexOf(q) !== -1) best = Math.max(best, 60);
+      else if(q.indexOf(f) !== -1 && f.length > 2) best = Math.max(best, 40);
+    });
+    return best;
+  }
+  function findMatches(query){
+    return STATS
+      .map(function(s){ return { stat:s, score:matchScore(query, s) }; })
+      .filter(function(r){ return r.score > 0; })
+      .sort(function(a,b){ return b.score - a.score; });
+  }
+
+  // ---------- source card rendering ----------
+  function sourceCard(source, query, primary){
+    var a = document.createElement("a");
+    a.className = "source-card" + (primary ? " primary" : "");
+    a.href = buildUrl(source, query);
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+
+    var top = document.createElement("div");
+    top.className = "source-top";
+    var name = document.createElement("span");
+    name.className = "source-name";
+    name.textContent = source.name;
+    var region = document.createElement("span");
+    region.className = "source-region";
+    region.textContent = source.region;
+    top.appendChild(name);
+    top.appendChild(region);
+
+    var action = document.createElement("span");
+    action.className = "source-action";
+    action.innerHTML = (source.type === "query"
+      ? "Search results for “" + query + "”"
+      : "Open statistics portal") + "<span class=\"arrow\">→</span>";
+
+    a.appendChild(top);
+    a.appendChild(action);
+    return a;
+  }
+
+  // ---------- suggestions ----------
+  var qInput = document.getElementById("q");
+  var suggestionsEl = document.getElementById("suggestions");
+  var resultsEl = document.getElementById("results");
+  var resultsTitle = document.getElementById("resultsTitle");
+  var resultsTag = document.getElementById("resultsTag");
+  var resultsBody = document.getElementById("resultsBody");
+
+  function renderSuggestions(query){
+    var matches = findMatches(query).slice(0, 6);
+    suggestionsEl.innerHTML = "";
+    if(!query.trim() || matches.length === 0){
+      suggestionsEl.hidden = true;
+      qInput.setAttribute("aria-expanded","false");
+      return;
+    }
+    matches.forEach(function(m){
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "suggestion";
+      btn.setAttribute("role","option");
+      var label = document.createElement("span");
+      label.textContent = m.stat.name;
+      var hint = document.createElement("small");
+      hint.textContent = m.stat.recommend.map(function(id){ return SOURCE_BY_ID[id].name; }).join(" · ");
+      btn.appendChild(label);
+      btn.appendChild(hint);
+      btn.addEventListener("click", function(){
+        qInput.value = m.stat.name;
+        showResults(m.stat.name);
+        suggestionsEl.hidden = true;
+        qInput.setAttribute("aria-expanded","false");
+      });
+      suggestionsEl.appendChild(btn);
+    });
+    suggestionsEl.hidden = false;
+    qInput.setAttribute("aria-expanded","true");
+  }
+
+  function showResults(query){
+    query = query.trim();
+    if(!query){ resultsEl.hidden = true; return; }
+
+    var matches = findMatches(query);
+    resultsEl.hidden = false;
+    resultsBody.innerHTML = "";
+
+    if(matches.length){
+      var top = matches[0].stat;
+      resultsTitle.textContent = top.name;
+      resultsTag.textContent = "matched";
+      resultsTag.className = "status-tag match";
+
+      var recLabel = document.createElement("div");
+      recLabel.className = "group-label";
+      recLabel.textContent = "Recommended for this statistic";
+      var recGrid = document.createElement("div");
+      recGrid.className = "source-grid";
+      top.recommend.forEach(function(id){
+        recGrid.appendChild(sourceCard(SOURCE_BY_ID[id], top.name, true));
+      });
+
+      var rest = SOURCES.filter(function(s){ return top.recommend.indexOf(s.id) === -1; });
+      var restLabel = document.createElement("div");
+      restLabel.className = "group-label";
+      restLabel.textContent = "Also indexed";
+      var restGrid = document.createElement("div");
+      restGrid.className = "source-grid";
+      rest.forEach(function(s){
+        restGrid.appendChild(sourceCard(s, top.name, false));
+      });
+
+      resultsBody.appendChild(recLabel);
+      resultsBody.appendChild(recGrid);
+      if(rest.length){
+        resultsBody.appendChild(restLabel);
+        resultsBody.appendChild(restGrid);
+      }
+    } else {
+      resultsTitle.textContent = "“" + query + "”";
+      resultsTag.textContent = "no curated match";
+      resultsTag.className = "status-tag free";
+
+      var hint = document.createElement("p");
+      hint.className = "empty-hint";
+      hint.textContent = "Not in the curated list yet — here's a live search on every indexed source instead.";
+
+      var grid = document.createElement("div");
+      grid.className = "source-grid";
+      SOURCES.forEach(function(s){
+        grid.appendChild(sourceCard(s, query, false));
+      });
+
+      resultsBody.appendChild(hint);
+      resultsBody.appendChild(grid);
+    }
+  }
+
+  var debounceId;
+  qInput.addEventListener("input", function(){
+    clearTimeout(debounceId);
+    var val = qInput.value;
+    debounceId = setTimeout(function(){ renderSuggestions(val); }, 90);
+  });
+  qInput.addEventListener("keydown", function(e){
+    if(e.key === "Enter"){
+      showResults(qInput.value);
+      suggestionsEl.hidden = true;
+      qInput.setAttribute("aria-expanded","false");
+    }
+    if(e.key === "Escape"){
+      suggestionsEl.hidden = true;
+      qInput.setAttribute("aria-expanded","false");
+    }
+  });
+  document.addEventListener("click", function(e){
+    if(!suggestionsEl.contains(e.target) && e.target !== qInput){
+      suggestionsEl.hidden = true;
+    }
+  });
+
+  // ---------- always-visible index ----------
+  var indexGrid = document.getElementById("indexGrid");
+  SOURCES.forEach(function(s){
+    var card = document.createElement("div");
+    card.className = "index-card";
+    var top = document.createElement("div");
+    top.className = "source-top";
+    var name = document.createElement("span");
+    name.className = "source-name";
+    name.textContent = s.name;
+    var region = document.createElement("span");
+    region.className = "source-region";
+    region.textContent = s.region;
+    top.appendChild(name);
+    top.appendChild(region);
+    var p = document.createElement("p");
+    p.textContent = s.type === "query" ? "Live search link" : "Static portal link";
+    card.appendChild(top);
+    card.appendChild(p);
+    indexGrid.appendChild(card);
+  });
+
+})();
+</script>
+</body>
+</html>
