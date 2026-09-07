@@ -1,1 +1,450 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbita — Bandi PhD e Postdoc in Fisica e Matematica</title>
+<meta name="description" content="Ricevi via email i nuovi bandi di dottorato e post-dottorato in fisica e matematica da atenei di tutto il mondo, filtrati per ambito.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #f7f5ee;
+    --paper-line: rgba(27,42,74,0.07);
+    --ink: #1b2a4a;
+    --ink-soft: #4a5a7a;
+    --rust: #b5651d;
+    --rust-dim: #b5651d1a;
+    --green: #3c6e47;
+    --card: #fffdf7;
+    --border: rgba(27,42,74,0.16);
+    --radius: 3px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--paper-line) 1px, transparent 1px) 0 0/100% 42px,
+      linear-gradient(90deg, var(--paper-line) 1px, transparent 1px) 0 0/42px 100%,
+      var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Spectral', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:var(--rust);}
+  ::selection{background:var(--rust-dim);}
+
+  .wrap{max-width:960px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav.top{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:26px 28px;
+    max-width:960px; margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Spectral', serif; font-size:19px; letter-spacing:0.01em;
+  }
+  .brand svg{display:block;}
+  nav.top .back{
+    font-size:14px; color:var(--ink-soft); text-decoration:none; border-bottom:1px solid transparent;
+  }
+  nav.top .back:hover{border-color:var(--ink-soft);}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:48px 28px 70px;
+  }
+  .hero-inner{
+    max-width:960px; margin:0 auto;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(34px, 5vw, 50px);
+    line-height:1.12;
+    max-width:520px;
+  }
+  .hero p.lede{
+    margin-top:20px;
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:460px;
+  }
+  .hero-figure{
+    position:relative;
+    aspect-ratio:1/1;
+  }
+
+  /* ---------- FORM CARD ---------- */
+  section.signup{padding:0 28px 90px;}
+  .card{
+    max-width:960px; margin:0 auto;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:44px;
+    box-shadow:0 1px 0 rgba(27,42,74,0.04);
+  }
+  .card .kicker{
+    font-size:14px; color:var(--rust); font-weight:600; margin-bottom:6px;
+  }
+  .card h2{font-size:26px; max-width:520px;}
+  .card .sub{color:var(--ink-soft); margin-top:10px; font-size:15px; max-width:560px;}
+
+  form{margin-top:34px;}
+
+  .bars{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border:1px solid var(--border);
+    border-radius:4px;
+    overflow:hidden;
+    background:var(--paper);
+  }
+  .bar{
+    display:flex; flex-direction:column;
+    padding:16px 20px;
+    position:relative;
+  }
+  .bar + .bar{border-left:1px solid var(--border);}
+  .bar label{
+    font-size:12px; text-transform:none; color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .bar select, .bar input{
+    border:none; background:transparent; font-family:'Inter',sans-serif;
+    font-size:16px; color:var(--ink); padding:0; outline:none;
+    width:100%;
+  }
+  .bar select{appearance:none; cursor:pointer; padding-right:20px;}
+  .bar.select-bar::after{
+    content:"";
+    position:absolute; right:20px; top:50%; transform:translateY(-30%);
+    width:8px; height:8px;
+    border-right:1.5px solid var(--ink-soft);
+    border-bottom:1.5px solid var(--ink-soft);
+    transform:translateY(-50%) rotate(45deg);
+    pointer-events:none;
+  }
+  .bar input::placeholder{color:#9aa5bd;}
+
+  @media (max-width:640px){
+    .bars{grid-template-columns:1fr;}
+    .bar + .bar{border-left:none; border-top:1px solid var(--border);}
+  }
+
+  /* Toggle: doppio pulsante PhD / Postdoc */
+  .stage-toggle{
+    margin-top:18px;
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .stage-toggle .stage-label{font-size:13px; color:var(--ink-soft);}
+  .toggle-group{
+    display:inline-flex; border:1px solid var(--border); border-radius:999px; padding:3px;
+    background:var(--paper);
+  }
+  .toggle-group button{
+    border:none; background:transparent; cursor:pointer;
+    font-family:'Inter',sans-serif; font-size:14px; font-weight:500;
+    color:var(--ink-soft);
+    padding:9px 20px; border-radius:999px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .toggle-group button[aria-pressed="true"]{
+    background:var(--ink); color:var(--paper);
+  }
+  .toggle-group button:hover:not([aria-pressed="true"]){color:var(--ink);}
+
+  .submit-row{
+    margin-top:26px;
+    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  }
+  button.cta{
+    background:var(--rust); color:var(--paper);
+    border:none; border-radius:4px;
+    font-family:'Inter',sans-serif; font-weight:600; font-size:15px;
+    padding:14px 26px; cursor:pointer;
+    transition:transform .12s ease, background .15s ease;
+  }
+  button.cta:hover{background:#9c5518;}
+  button.cta:active{transform:translateY(1px);}
+  button.cta:disabled{opacity:0.55; cursor:default;}
+
+  .status{font-size:14px;}
+  .status.ok{color:var(--green);}
+  .status.err{color:#a5311c;}
+
+  .fine-print{
+    margin-top:22px; font-size:13px; color:var(--ink-soft);
+    border-top:1px solid var(--border); padding-top:18px;
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  section.how{padding:0 28px 100px;}
+  .how-inner{max-width:960px; margin:0 auto;}
+  .how h2{font-size:24px; margin-bottom:34px;}
+  .steps{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    border-top:1px solid var(--border);
+  }
+  .step{
+    padding:26px 24px 0 0;
+    border-right:1px solid var(--border);
+  }
+  .step:last-child{border-right:none;}
+  .step .n{
+    font-family:'Spectral', serif; font-size:22px; color:var(--rust); display:block; margin-bottom:10px;
+  }
+  .step p{margin:0; color:var(--ink-soft); font-size:14.5px;}
+  @media (max-width:720px){
+    .steps{grid-template-columns:1fr;}
+    .step{border-right:none; border-bottom:1px solid var(--border); padding-bottom:22px;}
+  }
+
+  footer{
+    padding:34px 28px 50px; text-align:center;
+    color:var(--ink-soft); font-size:13px;
+  }
+
+  @media (max-width:820px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-figure{max-width:280px; margin:0 auto;}
+    .card{padding:30px 22px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  :focus-visible{outline:2px solid var(--rust); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="brand">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <circle cx="11" cy="11" r="1.6" fill="#1b2a4a"/>
+      <ellipse cx="11" cy="11" rx="10" ry="4" stroke="#b5651d" stroke-width="1.1"/>
+      <ellipse cx="11" cy="11" rx="10" ry="4" stroke="#1b2a4a" stroke-width="1.1" transform="rotate(60 11 11)"/>
+      <ellipse cx="11" cy="11" rx="10" ry="4" stroke="#1b2a4a" stroke-width="1.1" transform="rotate(120 11 11)"/>
+    </svg>
+    Orbita
+  </div>
+  <a class="back" href="../index.html">← Progetti</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Il prossimo bando di dottorato non ti passa più inosservato.</h1>
+      <p class="lede">Orbita controlla ogni giorno le principali fonti di fisica e matematica nel mondo e ti scrive un'unica email quando esce un bando che ti riguarda davvero — nel tuo ambito, per PhD o per Postdoc.</p>
+    </div>
+    <div class="hero-figure" aria-hidden="true">
+      <svg viewBox="0 0 300 300" width="100%" height="100%">
+        <circle cx="150" cy="150" r="6" fill="#b5651d"/>
+        <ellipse cx="150" cy="150" rx="130" ry="52" fill="none" stroke="#1b2a4a" stroke-width="1"/>
+        <ellipse cx="150" cy="150" rx="130" ry="52" fill="none" stroke="#1b2a4a" stroke-width="1" transform="rotate(60 150 150)"/>
+        <ellipse cx="150" cy="150" rx="130" ry="52" fill="none" stroke="#1b2a4a" stroke-width="1" transform="rotate(120 150 150)"/>
+        <circle id="orb1" cx="280" cy="150" r="5" fill="#1b2a4a"/>
+        <circle id="orb2" cx="150" cy="98" r="5" fill="#3c6e47"/>
+        <circle id="orb3" cx="20" cy="150" r="4" fill="#b5651d"/>
+        <animateTransform xlink:href="#orb1" attributeName="transform" type="rotate" from="0 150 150" to="360 150 150" dur="14s" repeatCount="indefinite"/>
+        <animateTransform xlink:href="#orb2" attributeName="transform" type="rotate" from="60 150 150" to="420 150 150" dur="20s" repeatCount="indefinite"/>
+        <animateTransform xlink:href="#orb3" attributeName="transform" type="rotate" from="120 150 150" to="-240 150 150" dur="26s" repeatCount="indefinite"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section class="signup">
+  <div class="card">
+    <div class="kicker">Iscrizione</div>
+    <h2>Scegli il tuo ambito, lascia la tua email.</h2>
+    <p class="sub">Alla conferma ricevi subito una prima email con i bandi più recenti già pubblicati in quell'ambito. Da lì in poi, solo le novità.</p>
+
+    <form id="signup-form" novalidate>
+      <div class="bars">
+        <div class="bar select-bar">
+          <label for="field">Ambito</label>
+          <select id="field" name="field" required>
+            <option value="" disabled selected>Seleziona un ambito</option>
+            <optgroup label="Fisica">
+              <option value="condensed-matter">Fisica della materia condensata</option>
+              <option value="particle">Fisica delle particelle</option>
+              <option value="astro">Astrofisica e cosmologia</option>
+              <option value="nuclear">Fisica nucleare</option>
+              <option value="quantum">Informazione e ottica quantistica</option>
+              <option value="plasma">Fisica dei plasmi e fusione</option>
+              <option value="biophysics">Biofisica</option>
+              <option value="statistical">Fisica statistica e sistemi complessi</option>
+              <option value="hep-theory">Fisica teorica / gravità</option>
+              <option value="geophysics">Geofisica e fisica dell'atmosfera</option>
+              <option value="medical-physics">Fisica medica</option>
+            </optgroup>
+            <optgroup label="Matematica">
+              <option value="pure-math">Matematica pura</option>
+              <option value="applied-math">Matematica applicata</option>
+              <option value="math-physics">Fisica matematica</option>
+              <option value="numerical">Analisi numerica</option>
+              <option value="probability">Probabilità e statistica</option>
+              <option value="algebra-geometry">Algebra e geometria</option>
+              <option value="topology">Topologia</option>
+              <option value="logic">Logica e fondamenti</option>
+            </optgroup>
+            <option value="all">Tutti gli ambiti</option>
+          </select>
+        </div>
+        <div class="bar">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="nome@esempio.com" required>
+        </div>
+      </div>
+
+      <div class="stage-toggle">
+        <span class="stage-label">Sei interessato a</span>
+        <div class="toggle-group" role="group" aria-label="Tipo di posizione">
+          <button type="button" id="btn-phd" aria-pressed="true">PhD</button>
+          <button type="button" id="btn-postdoc" aria-pressed="true">Postdoc</button>
+        </div>
+        <input type="hidden" id="stage" name="stage" value="phd,postdoc">
+      </div>
+
+      <div class="submit-row">
+        <button class="cta" type="submit" id="submit-btn">Iscrivimi alla newsletter</button>
+        <span id="form-status" class="status" role="status" aria-live="polite"></span>
+      </div>
+
+      <p class="fine-print">Un'email al massimo per ogni nuovo bando pubblicato, nessuna pubblicità. Puoi cancellarti in un clic da ogni email ricevuta.</p>
+    </form>
+  </div>
+</section>
+
+<section class="how">
+  <div class="how-inner">
+    <h2>Come funziona</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <p>Ogni giorno una routine automatica consulta gli annunci di dottorato e post-dottorato pubblicati dalle università e dai principali portali accademici di fisica e matematica nel mondo.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <p>I nuovi bandi vengono classificati per ambito e per tipo di posizione, e confrontati con quelli già inviati, così non ricevi mai lo stesso annuncio due volte.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <p>Ricevi un'email solo quando esce qualcosa che corrisponde ai tuoi criteri — più l'email di benvenuto iniziale con i bandi recenti già aperti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Orbita — un progetto personale · <a href="mailto:tuoindirizzo@esempio.com">contatti</a>
+</footer>
+
+<script>
+(function(){
+  // ---------------------------------------------------------------
+  // CONFIGURAZIONE: sostituisci con l'URL della tua funzione backend
+  // (vedi README.md — es. un Cloudflare Worker o una funzione Vercel
+  // che scrive su Supabase e invia l'email di benvenuto).
+  // ---------------------------------------------------------------
+  const SUBSCRIBE_ENDPOINT = "https://pj-finder-orpin.vercel.app";
+
+  const form = document.getElementById('signup-form');
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+  const stageHidden = document.getElementById('stage');
+  const btnPhd = document.getElementById('btn-phd');
+  const btnPostdoc = document.getElementById('btn-postdoc');
+
+  function currentStages(){
+    const stages = [];
+    if (btnPhd.getAttribute('aria-pressed') === 'true') stages.push('phd');
+    if (btnPostdoc.getAttribute('aria-pressed') === 'true') stages.push('postdoc');
+    return stages;
+  }
+
+  function toggleStage(btn){
+    // Almeno una delle due deve restare attiva.
+    const otherBtn = btn === btnPhd ? btnPostdoc : btnPhd;
+    const isPressed = btn.getAttribute('aria-pressed') === 'true';
+    if (isPressed && otherBtn.getAttribute('aria-pressed') === 'false') {
+      return; // non permettere di disattivarle entrambe
+    }
+    btn.setAttribute('aria-pressed', String(!isPressed));
+    stageHidden.value = currentStages().join(',');
+  }
+
+  btnPhd.addEventListener('click', () => toggleStage(btnPhd));
+  btnPostdoc.addEventListener('click', () => toggleStage(btnPostdoc));
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.textContent = '';
+    statusEl.className = 'status';
+
+    const field = document.getElementById('field').value;
+    const email = document.getElementById('email').value.trim();
+    const stages = currentStages();
+
+    if (!field) {
+      statusEl.textContent = 'Seleziona un ambito.';
+      statusEl.className = 'status err';
+      return;
+    }
+    if (!email || !email.includes('@')) {
+      statusEl.textContent = 'Inserisci un indirizzo email valido.';
+      statusEl.className = 'status err';
+      return;
+    }
+    if (stages.length === 0) {
+      statusEl.textContent = 'Scegli almeno PhD o Postdoc.';
+      statusEl.className = 'status err';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso…';
+
+    try {
+      const res = await fetch(SUBSCRIBE_ENDPOINT, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ field, email, stages })
+      });
+      if (!res.ok) throw new Error('Richiesta non riuscita');
+
+      statusEl.textContent = 'Fatto! Controlla la posta: arriva subito un riepilogo dei bandi più recenti.';
+      statusEl.className = 'status ok';
+      form.reset();
+      btnPhd.setAttribute('aria-pressed','true');
+      btnPostdoc.setAttribute('aria-pressed','true');
+      stageHidden.value = 'phd,postdoc';
+    } catch (err) {
+      statusEl.textContent = 'Qualcosa è andato storto. Riprova tra poco.';
+      statusEl.className = 'status err';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Iscrivimi alla newsletter';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
 
