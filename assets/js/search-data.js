@@ -412,6 +412,11 @@ ninja.data = [{
           description: "A search bar that finds you the right official source for any statistic.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_stats/";
+            },},{id: "projects-orbita",
+          title: 'Orbita.',
+          description: "Una newsletter che ti avvisa quando esce un nuovo bando di dottorato o post-dottorato in fisica o matematica, filtrato per ambito.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/orbita/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
