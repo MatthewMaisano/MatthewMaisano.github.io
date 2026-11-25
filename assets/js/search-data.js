@@ -417,6 +417,11 @@ ninja.data = [{
           description: "Una newsletter che ti avvisa quando esce un nuovo bando di dottorato o post-dottorato in fisica o matematica, filtrato per ambito.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/orbita/";
+            },},{id: "projects-homogeneous-black-holes-in-5d",
+          title: 'Homogeneous black holes in 5D.',
+          description: "My Master&#39;s thesis in theoretical physics — black holes with exotic horizon geometries in five-dimensional gauged supergravity.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/thesis/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",
