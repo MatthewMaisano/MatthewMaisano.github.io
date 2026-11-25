@@ -7,10 +7,7 @@ profile:
   align: right
   image: Profile_picture.jpeg
   image_circular: false # crops the image to make it circular
-  more_info: >
-    <p> 34b, Via San Carlo</p>
-    <p>Samarate, Italy , 21017</p>
-    
+
 social: true # includes social icons at the bottom of the page
 
 
