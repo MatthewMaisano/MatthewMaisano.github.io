@@ -11,7 +11,7 @@ ninja.data = [{
     },
   },{id: "nav-projects",
           title: "projects",
-          description: "Web apps and tools I&#39;m designing and building, from concept to launch.",
+          description: "Research, simulations and side projects — from black holes and lattice QCD to machine learning and small web tools.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
@@ -404,7 +404,7 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "projects-stats",
           title: 'Stats.',
-          description: "A search bar that finds you the right official source for any statistic.",
+          description: "A single search bar that sends you straight to the official source for any statistic.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_stats/";
             },},{id: "projects-ai-applied-to-astrophysics",
