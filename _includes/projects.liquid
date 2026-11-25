@@ -1,35 +1,23 @@
-<div class="col">
-  <a href="{% if project.redirect %}{{ project.redirect }}{% else %}{{ project.url | relative_url }}{% endif %}">
-    <div class="card h-100 hoverable">
-      {% if project.img %}
-        {%
-          include figure.liquid
-          loading="eager"
-          path=project.img
-          sizes = "250px"
-          alt="project thumbnail"
-          class="card-img-top"
-        %}
-      {% endif %}
-      <div class="card-body">
-        <h2 class="card-title">{{ project.title }}</h2>
-        <p class="card-text">{{ project.description }}</p>
-        <div class="row ml-1 mr-1 p-0">
-          {% if project.github %}
-            <div class="github-icon">
-              <div class="icon" data-toggle="tooltip" title="Code Repository">
-                <a href="{{ project.github }}"><i class="fa-brands fa-github gh-icon"></i></a>
-              </div>
-              {% if project.github_stars %}
-                <span class="stars" data-toggle="tooltip" title="GitHub Stars">
-                  <i class="fa-solid fa-star"></i>
-                  <span id="{{ project.github_stars }}-stars"></span>
-                </span>
-              {% endif %}
-            </div>
-          {% endif %}
-        </div>
+{% assign card_url = project.url | relative_url %}
+{% if project.redirect %}{% assign card_url = project.redirect %}{% endif %}
+<div class="pj-card">
+  <a class="pj-card-link" href="{{ card_url }}">
+    {% if project.thumb %}
+      <div class="pj-card-thumb">
+        <img src="{{ project.thumb | relative_url }}" alt="{{ project.title }} preview" loading="lazy">
       </div>
+    {% endif %}
+    <div class="pj-card-body">
+      {% if project.kind %}<div class="pj-eyebrow">{{ project.kind }}{% if project.year %} · {{ project.year }}{% endif %}</div>{% endif %}
+      <h2 class="pj-card-title">{{ project.title }}</h2>
+      <p class="pj-card-desc">{{ project.description }}</p>
+      {% if project.stack %}
+        <div class="pj-card-footer">
+          <ul class="pj-chips">
+            {% for s in project.stack limit: 4 %}<li>{{ s }}</li>{% endfor %}
+          </ul>
+        </div>
+      {% endif %}
     </div>
   </a>
 </div>

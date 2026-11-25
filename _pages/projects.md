@@ -2,18 +2,16 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Web apps and tools I'm designing and building, from concept to launch.
+description: Research, simulations and side projects — from black holes and lattice QCD to machine learning and small web tools.
 nav: true
 nav_order: 2
 horizontal: false
 ---
 
 <!-- pages/projects.md -->
-<div class="projects">
 {% assign sorted_projects = site.projects | sort: "importance" %}
-<div class="row row-cols-1 row-cols-md-3">
+<div class="pj-grid">
 {% for project in sorted_projects %}
   {% include projects.liquid %}
 {% endfor %}
-</div>
 </div>

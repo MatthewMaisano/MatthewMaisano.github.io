@@ -1,0 +1,61 @@
+---
+layout: default
+---
+{% comment %}
+  Layout for project pages (_projects/*.md).
+  Front matter used:
+    title, description, kind, year,
+    stack: [list of tools],
+    links: [{label, url, icon, primary}],
+    highlights: [{value, label}]
+{% endcomment %}
+
+<div class="post">
+  <header class="pj-hero">
+    {% if page.kind or page.year %}
+      <div class="pj-eyebrow">
+        {{ page.kind }}{% if page.kind and page.year %} · {% endif %}{{ page.year }}
+      </div>
+    {% endif %}
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.lede %}
+      <p class="pj-lede">{{ page.lede }}</p>
+    {% else %}
+      <p class="pj-lede">{{ page.description }}</p>
+    {% endif %}
+
+    {% if page.links %}
+      <div class="pj-actions">
+        {% for l in page.links %}
+          {% assign href = l.url %}
+          {% unless href contains '://' %}{% assign href = l.url | relative_url %}{% endunless %}
+          <a class="pj-btn{% if l.primary %} pj-btn-primary{% endif %}" href="{{ href }}" {% if href contains '://' or href contains '.pdf' %}target="_blank" rel="noopener"{% endif %}>
+            {% if l.icon %}<i class="{{ l.icon }}"></i>{% endif %}
+            {{ l.label }}
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if page.stack %}
+      <ul class="pj-chips">
+        {% for s in page.stack %}<li>{{ s }}</li>{% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if page.highlights %}
+      <div class="pj-stats">
+        {% for h in page.highlights %}
+          <div class="pj-stat">
+            <span class="pj-stat-value">{{ h.value }}</span>
+            <span class="pj-stat-label">{{ h.label }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  <article class="pj-body">
+    {{ content }}
+  </article>
+</div>

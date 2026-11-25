@@ -1,0 +1,452 @@
+/*******************************************************************************
+ * Project pages and project cards
+ * Used by _layouts/project.liquid and _includes/projects.liquid
+ ******************************************************************************/
+
+/* ---------- Project grid (projects page) ---------- */
+
+.pj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.pj-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 14px;
+  overflow: hidden;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.pj-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border-color: var(--global-theme-color);
+}
+
+.pj-card > a.pj-card-link {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: inherit;
+  text-decoration: none;
+}
+
+.pj-card-thumb {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid var(--global-divider-color);
+  overflow: hidden;
+}
+
+.pj-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+.pj-card:hover .pj-card-thumb img {
+  transform: scale(1.03);
+}
+
+.pj-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.1rem 1.2rem 1.2rem;
+}
+
+.pj-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+  margin-bottom: 0.35rem;
+}
+
+.pj-card-title {
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+  color: var(--global-text-color);
+}
+
+.pj-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+  margin-bottom: 0.9rem;
+}
+
+.pj-card-footer {
+  margin-top: auto;
+}
+
+/* ---------- Chips ---------- */
+
+.pj-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pj-chips li,
+.pj-chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  line-height: 1;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: var(--global-code-bg-color);
+  color: var(--global-text-color);
+  border: 1px solid var(--global-divider-color);
+  margin: 0;
+}
+
+/* ---------- Project page hero ---------- */
+
+.pj-hero {
+  padding: 1.5rem 0 1.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.pj-hero .pj-eyebrow {
+  font-size: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.pj-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 300;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+}
+
+.pj-hero .pj-lede {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--global-text-color-light);
+  max-width: 46rem;
+  margin-bottom: 1.25rem;
+}
+
+.pj-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.pj-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--global-theme-color);
+  color: var(--global-theme-color) !important;
+  background: transparent;
+  text-decoration: none !important;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.pj-btn:hover,
+.pj-btn.pj-btn-primary {
+  background: var(--global-theme-color);
+  color: #fff !important;
+}
+
+.pj-btn.pj-btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.pj-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.pj-stat {
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: var(--global-code-bg-color);
+  border: 1px solid var(--global-divider-color);
+}
+
+.pj-stat-value {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--global-theme-color);
+}
+
+.pj-stat-label {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--global-text-color-light);
+  margin-top: 0.25rem;
+}
+
+/* ---------- Project page body ---------- */
+
+.pj-body {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.pj-body h2 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 2.75rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.pj-body h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 2rem 0 0.75rem;
+}
+
+.pj-body h2:first-child {
+  margin-top: 0;
+}
+
+.pj-step {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+  margin-right: 0.4rem;
+}
+
+.pj-callout {
+  margin: 1.25rem 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  border-left: 4px solid var(--global-theme-color);
+  background: var(--global-code-bg-color);
+}
+
+.pj-callout > :last-child {
+  margin-bottom: 0;
+}
+
+.pj-callout-title {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+  margin-bottom: 0.35rem;
+}
+
+.pj-figure {
+  margin: 1.75rem 0 2rem;
+}
+
+.pj-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--global-divider-color);
+  padding: 0.5rem;
+}
+
+.pj-figure.pj-narrow {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pj-figure figcaption {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+.pj-figrow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.pj-figrow .pj-figure {
+  margin: 0;
+}
+
+.pj-figrow-wrap {
+  margin: 1.75rem 0 2rem;
+}
+
+.pj-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.9rem;
+  margin: 1.25rem 0 1.75rem;
+}
+
+.pj-feature {
+  padding: 1rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid var(--global-divider-color);
+  background: var(--global-card-bg-color);
+}
+
+.pj-feature strong {
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--global-text-color);
+}
+
+.pj-feature p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--global-text-color-light);
+}
+
+@media (max-width: 640px) {
+  .pj-hero h1 {
+    font-size: 2rem;
+  }
+
+  .pj-figrow {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Notebook cards (AI applied to astrophysics) ---------- */
+
+.nb-section-desc {
+  color: var(--global-text-color-light);
+  margin: -0.4rem 0 1.25rem;
+}
+
+.nb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+}
+
+.nb-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition:
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.nb-card:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--global-theme-color);
+}
+
+.nb-card-img {
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: #fff;
+  border-bottom: 1px solid var(--global-divider-color);
+}
+
+.nb-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.4rem;
+}
+
+.nb-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.nb-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.nb-card-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--global-text-color);
+}
+
+.nb-lecture {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--global-text-color-light);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 6px;
+  padding: 0.1rem 0.4rem;
+}
+
+.nb-card .pj-chips {
+  margin-bottom: 0.75rem;
+}
+
+.nb-card p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0 0 0.7rem;
+}
+
+.nb-result {
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  background: var(--global-code-bg-color);
+  border-left: 3px solid var(--global-theme-color);
+}
+
+.nb-links {
+  margin-top: auto;
+  padding-top: 0.4rem;
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
