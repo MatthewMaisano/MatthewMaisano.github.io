@@ -3,6 +3,16 @@
  * Used by _layouts/project.liquid and _includes/projects.liquid
  ******************************************************************************/
 
+/* ---------- Tokens ---------- */
+
+.pj-grid,
+.pj-card,
+.pj-hero,
+.pj-body {
+  --pj-tint: rgba(38, 152, 186, 0.07);
+  --pj-tint-strong: rgba(38, 152, 186, 0.14);
+}
+
 /* ---------- Project grid (projects page) ---------- */
 
 .pj-grid {
@@ -113,7 +123,7 @@
   line-height: 1;
   padding: 0.35rem 0.6rem;
   border-radius: 999px;
-  background: var(--global-code-bg-color);
+  background: var(--pj-tint);
   color: var(--global-text-color);
   border: 1px solid var(--global-divider-color);
   margin: 0;
@@ -191,7 +201,7 @@
 .pj-stat {
   padding: 0.9rem 1rem;
   border-radius: 12px;
-  background: var(--global-code-bg-color);
+  background: var(--pj-tint);
   border: 1px solid var(--global-divider-color);
 }
 
@@ -251,7 +261,7 @@
   padding: 1rem 1.25rem;
   border-radius: 10px;
   border-left: 4px solid var(--global-theme-color);
-  background: var(--global-code-bg-color);
+  background: var(--pj-tint);
 }
 
 .pj-callout > :last-child {
@@ -438,7 +448,7 @@
 .nb-result {
   padding: 0.6rem 0.75rem;
   border-radius: 8px;
-  background: var(--global-code-bg-color);
+  background: var(--pj-tint);
   border-left: 3px solid var(--global-theme-color);
 }
 
