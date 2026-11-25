@@ -412,6 +412,11 @@ ninja.data = [{
           description: "Statistics, machine learning and neural networks on real and simulated astrophysical data — 20 notebooks with their results.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/astro_ai/";
+            },},{id: "projects-lattice-simulations-from-oscillators-to-qcd",
+          title: 'Lattice simulations, from oscillators to QCD.',
+          description: "Computational physics lab — Monte Carlo path integrals in C for the quantum harmonic oscillator, and the topological susceptibility of SU(3) gauge theory.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/comp_lab/";
             },},{id: "projects-orbita",
           title: 'Orbita.',
           description: "Una newsletter che ti avvisa quando esce un nuovo bando di dottorato o post-dottorato in fisica o matematica, filtrato per ambito.",
