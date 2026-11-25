@@ -3,7 +3,7 @@ layout: page
 title: Orbita.
 description: Una newsletter che ti avvisa quando esce un nuovo bando di dottorato o post-dottorato in fisica o matematica, filtrato per ambito.
 img:
-importance: 3
+importance: 4
 category: work
 related_publications: false
 ---
