@@ -412,6 +412,11 @@ ninja.data = [{
           description: "A search bar that finds you the right official source for any statistic.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_stats/";
+            },},{id: "projects-ai-applied-to-astrophysics",
+          title: 'AI applied to astrophysics.',
+          description: "Statistics, machine learning and neural networks on real and simulated astrophysical data — 20 notebooks with their results.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/astro_ai/";
             },},{id: "projects-orbita",
           title: 'Orbita.',
           description: "Una newsletter che ti avvisa quando esce un nuovo bando di dottorato o post-dottorato in fisica o matematica, filtrato per ambito.",
