@@ -3,7 +3,7 @@ layout: page
 title: AI applied to astrophysics.
 description: Statistics, machine learning and neural networks on real and simulated astrophysical data — 20 notebooks with their results.
 img:
-importance: 3
+importance: 1
 category: work
 related_publications: false
 github: https://github.com/MatthewMaisano/Astrostatistics-Laboratory

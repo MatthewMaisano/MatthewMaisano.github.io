@@ -3,7 +3,7 @@ layout: page
 title: Stats.
 description: A search bar that finds you the right official source for any statistic.
 img:
-importance: 1
+importance: 2
 category: work
 related_publications: false
 ---
