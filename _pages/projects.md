@@ -1,6 +1,6 @@
 ---
 layout: page
-title: projects
+title: Projects
 permalink: /projects/
 description: Research, simulations and side projects — from black holes and lattice QCD to machine learning and small web tools.
 nav: true

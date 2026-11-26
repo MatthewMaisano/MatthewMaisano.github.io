@@ -15,10 +15,8 @@ cv:
       username: MatthewMaisano
 
   address:
-    street: 34b Via San Carlo 
     city: Samarate
     region: Lombardia
-    postalCode: 21017
     countryCode: IT
 
   sections:
@@ -35,7 +33,7 @@ cv:
           Quantum Field Theory I & II, Mathematical Methods for Physics, General Relativity, Statistical Mechanics, Theoretical Physics
           I & II, Quantum Gravity, Laboratory of Computational Physics, Topological Methods in Field Theories
         highlights:
-          - "Master Thesis (Not Finished Yet): Black Holes with homogeneous horizon in gauged supergravity"
+          - "Master Thesis: Black Holes with homogeneous horizon in gauged supergravity"
           - "Extra Courses Followed: Optimal Control Theory, Geometrical Methods for Physics, Phenomenology Theory"
 
       - institution: University of Milano Bicocca
@@ -56,11 +54,11 @@ cv:
     Experience:
       - company: Erba Fina
         position: Event Assistant & Coordinator
-        location: Erba fina, Busto Arsizio
+        location: Busto Arsizio, Italy
         start_date: 2020
         end_date: "Now"
         summary: >
-          Managed the logistical and technical execution of private and corporate events. I gained significant experience in multitasking and problem-solving, while refining my communication and leadership abilities. This role was instrumental in developing a high level of time management and the capacity to coordinate team efforts to ensure the success of complex projects.
+          (3-year tenure) Managed the logistical and technical execution of private and corporate events. I gained significant experience in multitasking and problem-solving, while refining my communication and leadership abilities. This role was instrumental in developing a high level of time management and the capacity to coordinate team efforts to ensure the success of complex projects.
 
       - position: Private tutor
         location: Milan, IT
@@ -74,29 +72,39 @@ cv:
         level: Master
         icon: fa-solid fa-hashtag
         keywords: "Quantum Mechanics, Computational Physics, Quantum Field Theory, Quantum gravity, General Relativity, Geometry"
-      - name: Coding Languages
+      - name: Technical Skills
         icon: fa-solid fa-hashtag
-        keywords: "Python, C, C++, ROOT, Mathematica"
+        keywords: "Python, C & C++, Mathematica, ROOT"
+      - name: Soft Skills
+        icon: fa-solid fa-hashtag
+        keywords: "Descriptive and mathematical modeling, Analytical thinking and complex problem solving, Proactivity and leadership, Autonomy and self-management"
 
     Languages:
       - name: Italian
         summary: "Native speaker"
 
       - name: English
-        summary: "Fluent"
+        summary: "Professional working proficiency (B2/C1)"
         
+    Research Interests:
+      - bullet: "My research interests lie primarily in theoretical physics, driven by both foundational questions and the mathematical challenges underlying them. During my master's thesis, I solved Einstein equations for various black hole solutions, mainly focusing on static, rotating, and charged cases in AdS5. To support this research, I built a solid foundation in String Theory and Supergravity (SUGRA)."
+      - bullet: "Quantum field theory"
+      - bullet: "AdS/CFT correspondence and string theory"
+      - bullet: "General relativity"
+      - bullet: "Numerical methods in theoretical physics"
+
     Interests:
-      - name: Mathematics
+      - name: Sports
         icon: fa-solid fa-tag
-        keywords: "Topology, Group Theory, Optimal Control Theory, Optimization, Knot Theory"
-        
+        keywords: "Rock climbing, Running, Strength training"
+
       - name: Reading
         icon: fa-solid fa-tag
-        keywords: "Scientific divulgation, Romance, Crime"
-        
-      - name: Climbing
+        keywords: "Literature, both scientific and non-scientific"
+
+      - name: Free time
         icon: fa-solid fa-tag
-        keywords: "Rock climbing, Boulder climbing"
+        keywords: "Videogames, Travelling (2–3 trips a year, in Europe and beyond)"
       
     Certificates:
       - name: B1 First Certificate
@@ -105,35 +113,31 @@ cv:
         icon: fa-solid fa-location-dot
 
     Projects:
-      - name: Master Thesis (still in progress)
+      - name: "Master thesis: Black holes with homogeneous horizon in gauged supergravity"
         summary: >
-          Finding solution to 5D Black Holes with homogeneous horizon, and possible extension to 8 Thurston Cosmologies. The work is done mostly in 5D AdS and also Asymptotically AdS
+          Finding solutions for 5D black holes with homogeneous horizon, with possible extensions to the 8 Thurston geometries. The work is mainly developed in 5D AdS and asymptotically AdS settings.
         highlights:
           - Extension of General Relativity
           - Einstein Equations
           - Coupled Differential Equations
           - Rotating and Charged Black Holes
-        start_date: Oct 2025
-        end_date: Sept 2026
-        
-      - name: Numerical Simulations for Astrophysics
+        start_date: 2025
+        end_date: 2026
+
+      - name: "Astrophysics Data Analysis: numerical simulations in Python"
         summary: >
-          Developed a numerical model to study astrophysical systems and visualize results with scientific plots by the use of Machine Learning Tecniques
+          Developed numerical models to study astrophysical systems and visualize results with scientific plots, including machine-learning-based techniques. Used Python tools for data analysis, validation, and interpretation of simulation outcomes.
         highlights:
           - Unsupervised and Supervised Learning
           - Neural Networks
-        start_date: March 2025
-        end_date: June 2025
+        start_date: 2025
+        end_date: 2025
 
-      - name: Harmonic Oscillator and Cluster Wilson
+      - name: "Harmonic Oscillator and Wilson Cluster: numerical simulations in C"
         summary: >
-          Explored Advanced Simulations in C of a quantum Harmonic Oscillator with the goal of computing the Mass and The Energy of the ground state. Use of Cluster Wilson (Milano - Bicocca) to generate data in order to compute numerically the topological Susceptibility of an SU(3) Yang-Mills Theory, and the Chiral Anomaly
+          Explored advanced C simulations of a quantum harmonic oscillator, with the goal of computing the mass and ground-state energy. Used the Wilson Cluster (Milano - Bicocca) to generate data for numerical computation of topological susceptibility in SU(3) Yang–Mills theory and the chiral anomaly.
         highlights:
           - Algorithm Efficiency Optimization
-          - Montecarlo Markov Chain
-        start_date: Oct 2024
-        end_date: June 2025
-        start_date: Oct 2024
-        end_date: June 2025
-
-   
+          - Markov Chain Monte Carlo
+        start_date: 2025
+        end_date: 2026
