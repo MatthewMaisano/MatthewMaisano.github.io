@@ -24,7 +24,6 @@ I have many interests but my gratest passion is physics, especially theoretical 
 Since the start of my Bachelor Degree, I had a deep curiousity in mathematical aspects of physics, Geometry, Group theory, Topology, and these interests drove me to choose a thesis about Black Holes (in D = 5 AdS), which is a great topic to investigate because of the recent developments in AdS/CFT conjecture and Gravity.<br>
 
 
-Now I'm looking for a PhD position, in order to pursue my long-term goal: becoming a researcher.<br>
 My passion for theoretical physics is continuously fueled by my independent reading and my active engagement with online scientific resources, I read many papers (and books) and try to find the solution to the problem of the day.
 
 
